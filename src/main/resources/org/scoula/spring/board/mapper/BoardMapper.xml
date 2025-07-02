@@ -6,10 +6,10 @@
 <mapper namespace="org.scoula.spring.board.mapper.BoardMapper">
     <select id="getList" resultType="org.scoula.spring.board.domain.BoardVO">
             <![CDATA[
-        select * from tbl_board
-        order by no desc
+        select * from tbl_board order by no desc
         ]]>
     </select>
+
     <insert id="create">
         insert into tbl_board (title, content, writer)
         values (#{title}, #{content}, #{writer})
@@ -18,6 +18,7 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
     <update id="update">
         update tbl_board set
                              title = #{title},
@@ -50,20 +51,21 @@
         where no = #{no}
 
     </select>
+
     <delete id="deleteAttachment">
         delete from tbl_board_attachment
         where no = #{no}
     </delete>
 
     <select id="get" resultMap="boardMap">
-        select b.*, a.no as ano, a.bno, a.filename, a.path,
-               a.content_type, a.size, a.reg_date as a_reg_date
-        from
-            tbl_board b left outer join tbl_board_attachment a
-                                        on b.no = a.bno
+        select b.*, a.no as ano, a.bno, a.filename, a.path, a.content_type, a.size, a.reg_date a_reg_date
+        from tbl_board b
+                 left outer join tbl_board_attachment a
+                                 on b.no = a.bno
         where b.no = #{no}
         order by filename
     </select>
+
 
     <resultMap id="boardMap" type="BoardVO">
         <id column="no" property="no"/>

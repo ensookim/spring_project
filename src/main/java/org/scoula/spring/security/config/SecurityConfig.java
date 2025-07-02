@@ -97,8 +97,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //member
                 //.antMatchers(HttpMethod.POST,"/api/member").authenticated() // 잘못 들어간 듯
                 .antMatchers(HttpMethod.PUT, "/api/member", "/api/member/*/changepassword").authenticated()
-                //board
-                .antMatchers(HttpMethod.POST, "/api/board/**").authenticated()
+                //board 권한 설정
+//                .antMatchers(HttpMethod.POST, "/api/board/**").authenticated()
                 .antMatchers(HttpMethod.PUT, "/api/board/**").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/api/board/**").authenticated()
                 .anyRequest().permitAll();
