@@ -1,1 +1,0 @@
-import{_ as e,b as t,o as a}from"./index-DkQywIVW.js";const o={name:"TravelListPage"};function r(s,n,c,_,l,p){return a(),t("div",null," 여행 목록 페이지입니다. ")}const f=e(o,[["render",r]]);export{f as default};
