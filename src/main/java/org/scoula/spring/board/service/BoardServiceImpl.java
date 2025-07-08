@@ -7,6 +7,8 @@ import org.scoula.spring.board.domain.BoardAttachmentVO;
 import org.scoula.spring.board.domain.BoardVO;
 import org.scoula.spring.board.dto.BoardDTO;
 import org.scoula.spring.board.mapper.BoardMapper;
+import org.scoula.spring.common.pagination.Page;
+import org.scoula.spring.common.pagination.PageRequest;
 import org.scoula.spring.common.util.UploadFiles;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -108,5 +110,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
 
+
+    @Override
+    public Page<BoardDTO> getPage(PageRequest pageRequest) {
+        List<BoardVO> boards = mapper.getPage(pageRequest);
+        int totalCount = mapper.getTotalCount();
+        return Page.of(pageRequest, totalCount,
+                boards.stream().map(BoardDTO::of).toList());
+    }
 
 }

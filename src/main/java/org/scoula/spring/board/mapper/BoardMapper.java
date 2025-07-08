@@ -3,6 +3,7 @@ package org.scoula.spring.board.mapper;
 import org.mapstruct.Mapper;
 import org.scoula.spring.board.domain.BoardAttachmentVO;
 import org.scoula.spring.board.domain.BoardVO;
+import org.scoula.spring.common.pagination.PageRequest;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface BoardMapper {
     public List<BoardAttachmentVO> getAttachmentList(Long bno);
     public BoardAttachmentVO getAttachment(Long no);
     public int deleteAttachment(Long no);
+    int getTotalCount();
+    List<BoardVO> getPage(PageRequest pageRequest);
+
 }

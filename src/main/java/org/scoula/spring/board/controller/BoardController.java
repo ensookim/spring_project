@@ -7,6 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.scoula.spring.board.domain.BoardAttachmentVO;
 import org.scoula.spring.board.dto.BoardDTO;
 import org.scoula.spring.board.service.BoardService;
+import org.scoula.spring.common.pagination.Page;
+import org.scoula.spring.common.pagination.PageRequest;
 import org.scoula.spring.common.util.UploadFiles;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -88,4 +90,8 @@ public class BoardController {
         return ResponseEntity.ok(service.deleteAttachment(no));
     }
 
+    @GetMapping("")
+    public ResponseEntity<Page> getList(PageRequest pageRequest) {
+        return ResponseEntity.ok(service.getPage(pageRequest));
+    }
 }

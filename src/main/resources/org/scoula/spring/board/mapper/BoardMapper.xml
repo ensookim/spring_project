@@ -86,4 +86,12 @@
         <result column="size" property="size"/>
         <result column="a_reg_date" property="regDate"/>
     </resultMap>
+
+    <select id="getTotalCount" resultType="java.lang.Integer">
+        select count(*) from tbl_board
+    </select>
+    <select id="getPage" resultType="BoardVO">
+        select * from tbl_board order by no desc
+            limit #{offset}, #{amount}
+    </select>
 </mapper>
